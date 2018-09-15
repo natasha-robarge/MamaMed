@@ -33,6 +33,9 @@
     .bolder-text {
       font-weight: 600;
     }
+    .extend-width {
+      width: 1500px;
+    }
   </style>
 </head>
 <body class="keen-dashboard" style="padding-top: 80px;">
@@ -46,9 +49,6 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="../">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
         <a class="navbar-brand" href="./">Mama Med &raquo; Pregnancy Kit</a>
       </div>
       <div class="navbar-collapse collapse">
@@ -61,7 +61,6 @@
   </div>
 
   <div class="container-fluid">
-
     <div class="row">
       <div class="col-sm-7">
         <div class="chart-wrapper">
@@ -93,13 +92,13 @@
         </div>
       </div>
 
-      <div class="col-sm-4">
+      <div class="col-md-7 extend-width">
         <div class="chart-wrapper">
           <div class="chart-title">
             Dashboard
           </div>
-          <div class="chart-stage">
-            <img data-src="holder.js/100%x240/white">
+          <div class="chart-stage" id="stat-chart">
+            
           </div>
           <div class="chart-notes">
             Notes about this chart
@@ -131,7 +130,7 @@
         </div>
       </div>
       
-      <div class="col-sm-6 col-md-4">
+      <!-- <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
           <div class="chart-title">
             Cell Title
@@ -171,9 +170,9 @@
             Notes about this chart
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="col-sm-6 col-md-4">
+      <!-- <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
           <div class="chart-title">
             Cell Title
@@ -186,12 +185,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-  </div>
-
-  <div class="container-fluid">
-    <p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>
   </div>
 
   <!-- Project Analytics -->
