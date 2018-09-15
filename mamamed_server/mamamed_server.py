@@ -1,9 +1,63 @@
-@route('/', method='GET')
+import json
+from bottle import route, run
+
+MOCK_DATA = [
+    {
+        "patientId" : 1,
+        "patientInfo" : {
+            "name": "daenerys",
+            "age": 25,
+            "pregnancyStartDate": "2018-01-01"
+        },
+        "medications" : [
+            {
+                "name": "firstMedA",
+                "prescribedBy": "doctorA",
+                "startDate": "2018-09-02 18:00:00 CDT",
+                "stopDate": "2018-09-02 18:00:00 CDT"
+            },
+            {
+                "name":"secondMedA",
+                "prescribedBy": "doctorA",
+                "startDate": "2018-09-02 18:00:00 CDT",
+                "stopDate": "2018-09-02 18:00:00 CDT"
+            }
+        ],
+        "diagnoses" : [
+            {
+                "description": "description given by doctor from one apptA",
+                "doctorNameA": "Doctor A",
+                "diagnosisDate": "2018-03-02 18:00:00 CDT"
+            }, {
+                "description": "description from another apptA",
+                "doctorNameA": "Doctor A",
+                "diagnosisDate": "2018-03-02 18:00:00 CDT"
+            }
+        ],
+        "appointments": [
+            {
+                "date": "2018-09-01 10:00:00 CST",
+                "doctorName": "Nurse A",
+                "doctorTitle": "Nurse",
+                "comment": "Patient said they experienced dizziness when standing up"
+            }, 
+            {
+                "date": "2018-06-05 10:00:00 CST",
+                "doctorName": "Nurse A",
+                "doctorTitle": "Nurse",
+                "comment": "Patient said they were experiencing frequent headaches"
+            }
+        ]
+    }
+]
+
+@route('/mamamed', method='GET')
 def main():
     return "hi\n"
 
+@route('/mamamed/patient/<id>', method='GET')
+def getAllPatientInfo(id):
+    return json.dumps(MOCK_DATA)
 
-# I've been bitten by using 'localhost' instead of 'listening on all interfaces' (whatever that means) by using 0.0.0.0...
-# I was able to curl on an instance but not from other AWS instances
-# Also, check inbound rules on an instance to make sure the port that's open is reachable via certain ips and security groups
+
 run(host='0.0.0.0', port=8080, debug=True)
