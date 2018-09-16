@@ -9,15 +9,15 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 
-def read_symtoms():
+def read_symptoms():
    users_ref = db.collection('test')
    docs = users_ref.get()
-   reqd_symtoms = []
+   symptoms = []
    for doc in docs:
        doc = doc.to_dict()
        split_doc = doc['entry'].split('|')
        if len(split_doc) > 1:
-           reqd_symtoms.append([split_doc[1], split_doc[0]])
-   return reqd_symtoms
+           symptoms.append([split_doc[1], split_doc[0]])
+   return symptoms
 
-print(read_symtoms())
+print(read_symptoms())
