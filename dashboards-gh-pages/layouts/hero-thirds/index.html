@@ -22,7 +22,16 @@
 
   <!-- Dashboard -->
   <link rel="stylesheet" type="text/css" href="../../assets/css/keen-dashboards.css" />
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Arbutus+Slab" rel="stylesheet">
   <style>
+    h3, h4 {
+      font-family: 'Arbutus Slab', serif;
+      font-weight: 500;
+    }
+    .chart-stage {
+      font-family: 'Alegreya Sans', sans-serif;
+      font-size: 16px;
+    }
     #body {
       background-color: #edf9ff;
     }
@@ -38,7 +47,7 @@
     #appointment-box {
       width: 620px;
     }
-    #appointment-box .chart-stage, #risk-factor-box .chart-stage {
+    #appointment-box .chart-stage, #recent-history-box .chart-stage {
       height: 405px;
     }
     .bolder-text {
@@ -56,8 +65,14 @@
     .ft-sz-sm {
       font-size: 13px;
     }
+    .extend-height {
+      height: 65px;
+    }
     .italicize {
       font-style: italic;
+    }
+    .hr-style-1 {
+      margin: 10px;
     }
   </style>
 </head>
@@ -97,40 +112,29 @@
               <h3 class="ft-sz-md" id="age"><span class="bolder-text">Age:</span></h3>
               <h3 class="ft-sz-md" id="gender"><span class="bolder-text">Gender:</span> Female</h3>
               <h3 class="ft-sz-md"><span class="bolder-text">Ethnicity:</span> African American</h3>
-              <h3><span class="bolder-text">Height:</span> 5'3</h3>
-              <h3><span class="bolder-text">Weight:</span> 165 lbs</h3>
+              <h3 class="ft-sz-md"><span class="bolder-text">Height:</span> 5'3'</h3>
+              <h3 class="ft-sz-md"><span class="bolder-text">Weight:</span> 165 lbs</h3>
               <h3 class="ft-sz-md"  id="last-period"><span class="bolder-text">Estimated Due Date:</span> 2018-10-08</h3>
               <h3 class="ft-sz-md" id="pregnancy-start-date"><span class="bolder-text">Pregnancy Start Date:</span> </h3>
               </div>
           </div>
-          <div class="chart-notes">
-            Notes about this chart
-        </div>
         </div>
       </div>  
 
-        <div class="col-sm-3 set-height" id="risk-factor-box">
-          <div class="chart-wrapper">
-            <div class="chart-title">
-              Risk Factors
-            </div>
-            <div class="chart-stage">
-                <h3><span class="bolder-text">Recent History:</span></h3>
-                <ul id="recent-voice-responses"> 
-                </ul>
-                <hr>
-                <h3><span class="bolder-text">Medications:</span></h3>
-                <ul id="meds-list">
-                  
-                </ul>
-            </div>
-            <div class="chart-notes">
-              Notes about this chart
+        <div class="col-sm-3 set-height" id="recent-history-box">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                Recent History
+              </div>
+              <div class="chart-stage">
+                  <h3><span class="bolder-text">Recent History:</span></h3>
+                  <ul id="recent-voice-responses"> 
+                  </ul>
+              </div>
             </div>
           </div>
-        </div>
 
-      <div class="col-md-4" id="appointment-box">
+      <div class="col-md-3" id="appointment-box">
         <div class="chart-wrapper">
           <div class="chart-title">
             Prior Appointments
@@ -144,13 +148,23 @@
               <br>
             <h4><span class="bolder-text" id="nearest-clinic">Nearest (Mobile) Clinic:</span> Van #22</h4>
           </div>
-          <div class="chart-notes">
-            Notes about this chart
-          </div>
         </div>
       </div>
     </div>
   </div> 
+
+  <div class="col-sm-2 extend-width" id="risk-factor-box">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Medications
+        </div>
+        <div class="chart-stage">
+            <h3><span class="bolder-text">Medications:</span></h3>
+            <ul id="meds-list">  
+            </ul>
+        </div>
+      </div>
+    </div>
 
     <div class="col-md-7 extend-width">
         <div class="chart-wrapper">
@@ -158,9 +172,6 @@
             <h5>Responses</h5>
           </div>
             <div class="chart-stage" id="responses"></div>
-            <div class="chart-notes">
-              Notes about this chart
-            </div>
         </div>
       </div>
  
@@ -184,9 +195,6 @@
           </div>
           <div class="chart-stage" id="visits">  
           </div>
-          <div class="chart-notes">
-            Notes about this chart
-          </div>
         </div>
       </div>
 
@@ -196,9 +204,6 @@
             <h5>Medications</h5>
           </div>
           <div class="chart-stage" id="medications">  
-          </div>
-          <div class="chart-notes">
-            Notes about this chart
           </div>
         </div>
       </div>
