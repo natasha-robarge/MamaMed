@@ -1,8 +1,8 @@
 $(document).ready(function () {
-    $("#responses").html('<iframe src="https://plot.ly/~cfwarnoc/18/#/" height="250" width="1450"></iframe>');
-    $("#diagnoses").html('<iframe src="https://plot.ly/~cfwarnoc/14/#/" height="250" width="1450"></iframe>')
-    $("#visits").html('<iframe src="https://plot.ly/~cfwarnoc/12/#/" height="250" width="1450"></iframe>')
-    $("#medications").html('<iframe src="https://plot.ly/~cfwarnoc/16/#/" height="250" width="1450"></iframe>')
+    $("#responses").html('<iframe src="https://plot.ly/~karmakettle/0/google-home-responses-vs-weeks/#/" height="250" width="1450"></iframe>');
+    $("#diagnoses").html('<iframe src="https://plot.ly/~karmakettle/6/diagnoses-vs-weeks/#/" height="250" width="1450"></iframe>')
+    $("#visits").html('<iframe src="https://plot.ly/~karmakettle/2/visits-vs-weeks/#/" height="250" width="1450"></iframe>')
+    $("#medications").html('<iframe src="https://plot.ly/~karmakettle/4/medications-vs-weeks/#/" height="250" width="1450"></iframe>')
 
     //file:///C:/dev/MamaMed/dashboards-gh-pages/layouts/hero-thirds/index.html
 
