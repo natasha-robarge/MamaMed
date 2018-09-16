@@ -1,4 +1,6 @@
 import firebase_admin
+from flask import Flask, Response
+
 from firebase_admin import credentials
 from firebase_admin import firestore
 
@@ -7,6 +9,7 @@ cred = credentials.Certificate('fb_creds.json')
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
+app = Flask(__name__)
 
 
 def read_symptoms():
@@ -20,4 +23,13 @@ def read_symptoms():
            symptoms.append([split_doc[1], split_doc[0]])
    return symptoms
 
-print(read_symptoms())
+@app.route('/api', methods=['GET'])
+def get_user_responses():
+    response_date, response_content = read_symptoms()
+    resp = {
+        "date": response_date,
+        "content": response_content
+    }
+    return Response(resp)
+
+app.run(host='0.0.0.0', port=3128, debug=True)
