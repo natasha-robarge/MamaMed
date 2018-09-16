@@ -8,6 +8,7 @@ MamaMed is a Google Voice assistant app for assisting low income pregnant female
     - AWS
     - Plotly
     - Google Voice Assistant API
+    - Keen.io Layouts
 
 
 Made at Women Who Code 4th Diversity Hackathon 2018
