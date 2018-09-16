@@ -1,5 +1,6 @@
 import json
-from bottle import route, run
+import ssl
+from flask import Flask, Response
 
 MOCK_DATA = [
     {
@@ -51,13 +52,31 @@ MOCK_DATA = [
     }
 ]
 
-@route('/mamamed', method='GET')
+app = Flask(__name__)
+
+cert_file = 'rootCA.pem'
+pkey_file = 'server.key'
+context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
+context.load_cert_chain(cert_file, pkey_file)
+
+
+@app.route('/mamamed', methods=['GET', 'OPTIONS'])
 def main():
-    return "hi\n"
+    resp = Response("hi")
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    resp.headers['Cache-Control'] = 'no-cache'
+    return resp
 
-@route('/mamamed/patient/<id>', method='GET')
+@app.route('/mamamed/patient/<int:id>', methods=['GET', 'OPTIONS'])
 def getAllPatientInfo(id):
-    return json.dumps(MOCK_DATA)
+    # resp = Response("Foo bar baz")
+    resp = Response(json.dumps(MOCK_DATA))
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    resp.headers['Content-Type'] = 'application/json'
+    resp.headers['Cache-Control'] = 'no-cache'
+    print(resp)
+    return resp
 
-
-run(host='0.0.0.0', port=8080, debug=True)
+app.run(host='0.0.0.0', port=5000, debug=True, ssl_context=context)
