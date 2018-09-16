@@ -53,6 +53,12 @@
     .set-height {
       height: 40px;
     }
+    .ft-sz-sm {
+      font-size: 13px;
+    }
+    .italicize {
+      font-style: italic;
+    }
   </style>
 </head>
 <body class="keen-dashboard" id="body" style="padding-top: 80px;">
@@ -66,7 +72,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" id="nav-text" href="./">Mama Med &raquo; Pregnancy Kit</a>
+        <a class="navbar-brand" id="nav-text" href="./">Mama Med</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar navbar-nav navbar-left">
@@ -86,15 +92,15 @@
           </div>
           <div class="chart-stage">
             <div id="grid-1-1">
-              <h3 class="ft-sz-md"><span class="bolder-text" id="patient-name">Patient Name:</span> Sandy Payne</h3>
-              <h3 class="ft-sz-md"><span class="bolder-text" id="birth-date">DOB:</span> 07/09/1980</h3>
-              <h3 class="ft-sz-md"><span class="bolder-text" id="age">Age:</span> 38</h3>
-              <h3 class="ft-sz-md"><span class="bolder-text" id="gender">Gender:</span> Female</h3>
+              <h3 class="ft-sz-md" id="patient-name"><span class="bolder-text">Patient Name:</span> Sandy Payne</h3>
+              <h3 class="ft-sz-md" id="birth-date"><span class="bolder-text">DOB:</span> 07/09/1993</h3>
+              <h3 class="ft-sz-md" id="age"><span class="bolder-text">Age:</span></h3>
+              <h3 class="ft-sz-md" id="gender"><span class="bolder-text">Gender:</span> Female</h3>
               <h3 class="ft-sz-md"><span class="bolder-text">Ethnicity:</span> African American</h3>
               <h3><span class="bolder-text">Height:</span> 5'3</h3>
               <h3><span class="bolder-text">Weight:</span> 165 lbs</h3>
-              <h3 class="ft-sz-md"><span class="bolder-text" id="last-period">Date Since Last Period:</span> 07/29/2018</h3>
-              <h3 class="ft-sz-md"><span class="bolder-text" id="estimated-due-date">Estimated Due Date:</span> 05/03/2019</h3>
+              <h3 class="ft-sz-md"  id="last-period"><span class="bolder-text">Estimated Due Date:</span> 2018-10-08</h3>
+              <h3 class="ft-sz-md" id="pregnancy-start-date"><span class="bolder-text">Pregnancy Start Date:</span> </h3>
               </div>
           </div>
           <div class="chart-notes">
@@ -109,17 +115,14 @@
               Risk Factors
             </div>
             <div class="chart-stage">
-                <h3><span class="bolder-text">Allergies:</span></h3>
-                <ul>
-                  <li>High Blood Pressure</li>
-                  <li>Anxiety</li>
-                  <li>Thyroid Disease</li>
+                <h3><span class="bolder-text">Recent History:</span></h3>
+                <ul id="recent-voice-responses"> 
                 </ul>
                 <hr>
-                <h4><span class="bolder-text">BMI:</span> 28.0</h4>
-                <h4><span class="bolder-text">Vital Stats:</span></h4>
-                <hr>
                 <h3><span class="bolder-text">Medications:</span></h3>
+                <ul id="meds-list">
+                  
+                </ul>
             </div>
             <div class="chart-notes">
               Notes about this chart
@@ -135,11 +138,8 @@
           <div class="chart-stage" style="padding: 20px;">
             <h3><span class="bolder-text" id="last-visit">Last Visit:</span> 09/05/2018</h3>
             <h3><span class="bolder-text" id="next-visit">Next Visit:</span> 09/25/2018</h3>
-            <h4><span class="bolder-text" id="visit-history">Visit History:</span></h4>
-              <ul class="visit-history">
-                <li><h4>08/07/2018</h4></li>
-                <li><h4>08/22/2018</h4></li>
-                <li><h4>09/05/2018</h4></li>
+            <h4><span class="bolder-text">Visit History:</span></h4>
+              <ul class="visit-history" id="visit-history">
               </ul>
               <br>
             <h4><span class="bolder-text" id="nearest-clinic">Nearest (Mobile) Clinic:</span> Van #22</h4>
