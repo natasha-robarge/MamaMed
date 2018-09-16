@@ -1,21 +1,51 @@
 import json
 import ssl
+import firebase_admin
+
+from firebase_admin import credentials
+from firebase_admin import firestore
 from flask import Flask, request, Response
+
+
+cred = credentials.Certificate('fb_creds.json')
+firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+app = Flask(__name__)
+
+cert_file = 'rootCA.pem'
+pkey_file = 'server.key'
+context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
+context.load_cert_chain(cert_file, pkey_file)
+
+def read_symptoms():
+   users_ref = db.collection('test')
+   docs = users_ref.get()
+   symptoms = []
+   for doc in docs:
+       doc = doc.to_dict()
+       split_doc = doc['entry'].split('|')
+       if len(split_doc) > 1:
+           symptoms.append([split_doc[1], split_doc[0]])
+   return symptoms
 
 MOCK_DATA = [
     {
         "patientId" : 1,
         "patientInfo" : {
-            "name": "daenerys",
-            "age": 25,
-            "pregnancyStartDate": "2018-01-01"
+            "name": "Sandy Payne",
+            "dateOfBirth": "1980-07-09",
+            "age": 38,
+            "pregnancyStartDate": "2018-04-01",
+            "dateOfLastPeriod": "2017-03-25",
+            "dueDate": "2019-01-06",
         },
         "medications" : [
             {
-                "name": "firstMedA",
-                "prescribedBy": "doctorA",
-                "startDate": "2018-09-02 18:00:00 CDT",
-                "stopDate": "2018-09-02 18:00:00 CDT"
+                "name": "prenatal vitamins",
+                "prescribedBy": "Dr. Timber",
+                "startDate": "2018-01-01 18:00:00 CDT",
+                "stopDate": "2019-01-06 18:00:00 CDT"
             },
             {
                 "name":"secondMedA",
@@ -48,16 +78,10 @@ MOCK_DATA = [
                 "doctorTitle": "Nurse",
                 "comment": "Patient said they were experiencing frequent headaches"
             }
-        ]
+        ],
+        "patientGoogleVoiceSessions" : read_symptoms()
     }
 ]
-
-app = Flask(__name__)
-
-cert_file = 'rootCA.pem'
-pkey_file = 'server.key'
-context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
-context.load_cert_chain(cert_file, pkey_file)
 
 
 @app.route('/mamamed', methods=['GET', 'OPTIONS'])
